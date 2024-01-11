@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corso Cybersecurity - Docente Carlo Inserra</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+ /* Regole CSS per il tema chiaro */
+    body {
+      background-color: #fff; /* Colore di sfondo chiaro */
+      color: #000; /* Colore del testo chiaro */
+    }
+
+    /* Regole CSS per il tema scuro (inizialmente nascoste) */
+    body.dark-mode {
+      background-color: #333; /* Colore di sfondo scuro */
+      color: #fff; /* Colore del testo scuro */
+    }    
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="kali.html">Kali linux</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="appsflask.html">Applicazioni flask</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="alterapp.html">Applicazioni con crittografia</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="document.html">Riferimenti utili</a>
+        </li>      </ul>
+    </div>
+  </nav> 
+  <!-- Contenuto principale -->
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6 order-md-2">
+        <img src="fotoprof.jpeg" alt="Immagine Profilo" class="profile-pic img-fluid">
+         <div class="text-center mt-3">
+          <button id="theme-toggle" style="background-color: #007BFF; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Cambia tema</button>
+        </div>      </div>
+      <div class="col-md-6 order-md-1 text-center">
+        <h1>Corso Cybersecurity</h1>
+        <h3>Docente Carlo Inserra</h3>
+              
+        <h4>Link alle dispense:</h4>
+         <p>Lezione 1:</p>
+        <ul>
+          <li>Architettura di un calcolatore</li>
+          <li>Tipi di virus</li>
+          <li>Backup dei dati</li>  
+          
+        </ul>
+        <a href="https://docs.google.com/presentation/d/1H9uztJNOqoR2qCzNLRRxS9ZkBoQNzNpCYNE0DE0ZB4M/edit?usp=sharing" target="_blank">Dispense Lezione 1</a>       
+
+        <p>Lezione 2:</p>
+        <ul>
+          <li>Definizione di ethical hacking</li>
+          <li>Port scanning</li>
+          <li>Introduzione a Nmap</li>
+          <li>Firewall</li>
+          <li>Antivirus</li>
+        </ul>
+        <a href="https://docs.google.com/presentation/d/1aGzslaU9zZ_b-SE5XFANg7F5j9BXHTYTCfpwsh-pGhA/edit?usp=sharing" target="_blank">Dispense Lezione 2</a>
+
+        <p>Lezione 3:</p>
+        <ul>
+          <li>Definizione e principi della cybersecurity</li>
+          <li>Tool online per la scansione di vulnerabilità</li>
+        </ul>
+        <a href="https://docs.google.com/presentation/d/1VL2RAkS8LZwXWIxHzZus4yHABl1qIDR-IY0cTQ4KZZk/edit?usp=sharing" target="_blank">Dispense Lezione 3</a>
+        <p>Lezione 4:</p>
+        <ul>
+          <li>Concetti principali di crittografia</li>
+          <li>Princi matematici alla base delle crittografia</li>
+          <li>Crittografia simmetrica e modalità di operazione</li>
+          <li>Esempi concreti di crittografia simmetrica: Cifrario di Cesare, Aes, Des</li>
+          <li>Crittografia asimmetrica e i concetti di chiavi pubblica e chiave privata</li>
+          <li>Metodologie di crittografia asimmetrica: RSA, Diffie-Helmann, ECC</li>        </ul>
+        <a href="https://docs.google.com/presentation/d/1gFHZGVdK6rnU8K2T73qDuTHD8rcYYRQlZZ8JOwgNZF0/edit?usp=sharing" target="_blank">Dispense Lezione 4</a>
+
+        <p>Lezione 5:</p>
+        <ul>
+          <li>Tipi di connessioni</li>
+          <li>Le tipologie di reti</li>
+          <li>SSL/TLS: crittografia per la comunicazione sicura su Internet  </li>
+          <li>Vpn: virtual private network</li>  
+        </ul>
+        <a href="https://docs.google.com/presentation/d/1A3ljHkhxGkyhBJ3nlFongn7KH_HTY7SmzHa8Mtpon_c/edit?usp=sharing" target="_blank">Dispense Lezione 5</a>
+
+         <p>Lezione 6:</p>
+        <ul>
+          <li>La tecnologia dei cookie</li>
+          <li>tipologie di cookie</li>
+          <li>Vulnerabilità in word ed excel</li>
+          <li>Competenze digitali secondo l'Agid</li>  
+          <li>Licenze creative commons</li>
+          <li>Licenze software</li> 
+        </ul>
+        <a href="https://docs.google.com/presentation/d/1dpfNvkTtWqI-4l0hoE7BdTyzaTlRqzitiwo_CBNxjQE/edit?usp=sharing">Dispense Lezione 6</a>
+         <p>Lezione 7:</p>
+        <ul>
+          <li>Teoria delle reti</li>      
+          <li>Mac e ip address</li>  
+          <li>Le reti aziendali</li>
+          <li>Switch, router, firewall</li>
+          <li>Sicurezza informatica in azienda</li>
+          <li>Il modello information security</li>
+          
+            
+          <li>Vulnerability assessment</li>
+          <li>Cosa è un server</li>  
+          <li>Tipi di server e configurazione</li>
+          
+        </ul>
+        <a href="https://docs.google.com/presentation/d/1ZJGuVWMfYdGLICgloG0RbDqJAt1VKa7QH_bEGX8DbIU/edit?usp=sharing">Dispense Lezione 7</a>   
+         <p>Lezione 8:</p>
+        <ul>
+          <li>SkyWiper: il virus alla lente di ingrandimento</li>
+          <li>Librerie utilizzate</li>
+          <li>Funzioni spiegate</li>
+         
+        </ul>
+        <a href="https://docs.google.com/presentation/d/1g3yp5uGuhzuim_-esBAsiZMJjHkotqZz3DruGxyckU0/edit?usp=sharing">Dispense Lezione 8</a>  
+        <p>Lezione 9:</p>
+        <ul>
+          <li>Violazioni di router</li>
+          <li>Violazioni nelle reti mobili</li>
+          <li>Wifi vs reti mobili</li>
+          <li>Cve: community vulnerabilities and exposure</li>   
+          <li>Common Vulnerability Scoring System (CVSS) </li>    
+        </ul>        <a href="https://docs.google.com/presentation/d/1RXLMm3X_cybjdGyhY2y-hEnNnRLJKgzGugS9M2zeFOA/edit?usp=sharing">Dispense Lezione 9</a> 
+         <p>Lezione 10:</p>
+        <ul>
+          <li>Analisi delle vulnerabilità di una applicazione web</li>
+          <li>Tool per testare le applicazioni web: dirbuster, wpscan, sqlmap, skipfish </li>
+          
+          <li>Owasp top10</li>
+          <li>Protocollo http</li>   
+          <li>Sicurezza applicazioni mobili</li>    
+        </ul>        <a href="https://docs.google.com/presentation/d/1Gu8qbNdR00JLVMfqUHSKghmXDfV4rARSVFSRsTKL8Mg/edit?usp=sharing">Dispense Lezione 10</a>
+         <p>Lezione 11:</p>
+        <ul>
+          <li>Introduzione alla blockchain</li>
+          <li>Principi della blockchain</li>
+          <li>Funzioni di hash e mining</li>
+          <li>Smart contract</li>   
+          <li>Rischi e vulnerabilità della blockchain </li>    
+        </ul>        <a href="https://docs.google.com/presentation/d/1G3Jzq8KIRiOQ-eX6BSlauG1xj_n5fdmiP-80KbvTd4U/edit?usp=sharing">Dispense Lezione 11</a>  
+        <p>Lezione 12:</p>
+        <ul>
+          <li>Attacchi Ddos</li>
+          <li>Sistemi prevenzione Ids e Ips</li>
+          <li>Tipologie di rilvamento</li>
+             
+          <li> Sniffing di rete: Whireshark  </li> 
+          <li>Simulazione Ddos e stress test: Hping3 </li> 
+           <li> Strumenti per il rilevamento di firewall o bilanciatori di carico: lbd e wafw00f </li>
+           <li> Query dns </li>
+          <li> Strumenti per la ricognizione dns: Dnsrecon, dig  </li>
+          <li> report finale </li>
+        </ul>        <a href="https://docs.google.com/presentation/d/1GFZMzgryB0YmlyLNaYXOAaWy6bYYbJL4icjZ8MMsZ5I/edit?usp=sharing">Dispense Lezione 12</a>         <p>Git e GitHub: Panoramica dell’utilizzo di Git e di GitHub per la produzione</p>
+        <a href="https://docs.google.com/presentation/d/191y3_QZiIPhX9w_mJGl1kS6Ct5xZIyT120QUygpzcDY/edit?usp=sharing" target="_blank">Dispense Git e GitHub</a>
+        <br>
+        <a href="https://docs.google.com/presentation/d/1IrXzvfVoOQdtu73sddTSF8CdZHgjv8cGGZLjFNLdHIQ/edit?usp=sharing" target="_blank">Altre dispense Git e GitHub</a>
+      </div>
+    </div></div>
+    <!-- Glossario -->
+<div class="container mt-4">
+  <h2>Glossario</h2>
+  <dl>
+    <dt>BIOS (Basic Input/Output System)</dt>
+    <dd>Un firmware integrato sulla scheda madre del computer che gestisce le operazioni di avvio e alcune impostazioni hardware.</dd>
+
+    <dt>Bus</dt>
+    <dd>Un sistema di comunicazione che consente il trasferimento di dati tra le componenti hardware del computer.</dd>
+
+    <dt>CLI (Command Line Interface)</dt>
+    <dd>Interfaccia utente basata su testo in cui gli utenti inseriscono comandi tramite una riga di comando.</dd>
+
+    <dt>CPU (Central Processing Unit)</dt>
+    <dd>Il processore principale di un computer, responsabile dell'esecuzione delle istruzioni dei programmi.</dd>
+
+    <dt>Driver</dt>
+    <dd>Software che permette al sistema operativo di comunicare con dispositivi hardware specifici.</dd>
+
+    <dt>EULA (End-User License Agreement)</dt>
+    <dd>L'accordo di licenza tra l'utente finale e il produttore di software.</dd>
+
+    <dt>File System</dt>
+    <dd>La struttura organizzativa che determina come i dati sono memorizzati e organizzati su un dispositivo di archiviazione.</dd>
+
+    <dt> Firewall</dt>
+    <dd>
+è un sistema di sicurezza informatica che monitora e controlla il traffico di rete per proteggere una rete o un dispositivo da minacce esterne.
+      Funziona impedendo o consentendo selettivamente il passaggio di dati in base a regole predefinite, contribuendo a proteggere la rete da accessi non autorizzati o attacchi informatici
+      
+    </dd>
+
+    <dt>Freeware</dt>
+    <dd>Software gratuito.</dd>
+
+    <dt>GUI (Graphical User Interface)</dt>
+    <dd>Interfaccia utente basata su grafica che utilizza finestre, icone e menu per l'interazione.</dd>
+     <dt>Indirizzo IP</dt>
+    <dd>(Indirizzo Protocollo Internet) è una serie di numeri univoci utilizzati per identificare un dispositivo o una risorsa su una rete IP (Internet Protocol) 
+      come Internet. Funziona come il "numero di telefono" di un dispositivo in una rete,
+      consentendo la comunicazione tra dispositivi e il routing dei dati su Internet. Gli indirizzi IP possono essere di due tipi principali: IPv4 (versione 4) e IPv6 (versione 6).</dd>
+    
+
+    <dt>Kernel</dt>
+    <dd>Il nucleo di un sistema operativo, responsabile della gestione delle risorse hardware e dell'esecuzione dei processi.</dd>
+
+    <dt>MAC Address (Media Access Control)</dt>
+    <dd>è un identificatore unico assegnato a una scheda di rete o a un'interfaccia di rete su un dispositivo. Questo identificatore è utilizzato 
+    per identificare in modo univoco un dispositivo all'interno di una rete locale (LAN). È un indirizzo fisico a livello hardware che consente ai dispositivi di 
+    comunicare tra loro su una rete locale</dd> 
+    
+    <dt>Networking</dt>
+    <dd>La pratica di collegare computer e dispositivi per condividere risorse e dati.</dd>
+
+    <dt>OSI (Open Systems Interconnection)</dt>
+    <dd>Un modello di riferimento che definisce sette strati di protocolli per le comunicazioni di rete.</dd>
+
+    <dt>RAM (Random Access Memory)</dt>
+    <dd>La memoria volatile utilizzata per l'esecuzione dei programmi e lo stoccaggio temporaneo dei dati.</dd>
+
+    <dt>Registro di sistema</dt>
+    <dd>Un database in cui Windows e altri sistemi operativi archiviano informazioni e impostazioni.</dd>
+
+    <dt>ROM (Read-Only Memory)</dt>
+    <dd>Memoria di sola lettura utilizzata per memorizzare firmware e dati permanenti.</dd>
+
+    <dt>Router</dt>
+    <dd>
+ è un dispositivo di rete che collega reti diverse e instrada il traffico dei dati tra di esse. Serve come "punto di ingresso" tra una rete locale (LAN) e una rete esterna, come Internet.
+      Il router utilizza gli indirizzi IP per dirigere i pacchetti di dati tra le reti,
+      consentendo la comunicazione tra dispositivi nella LAN e altre reti. Inoltre, gestisce le funzioni di sicurezza e fornisce servizi 
+      come la traduzione degli indirizzi di rete (NAT) e il firewall
+      
+    </dd>
+
+    <dt>Scanner</dt>
+    <dd>Dispositivo per la digitalizzazione di documenti o immagini.</dd>
+
+    <dt>Server</dt>
+    <dd>Un computer o un sistema informatico dedicato a fornire servizi, risorse o dati ad altri computer, noti come "client", all'interno di una rete. I server svolgono un ruolo fondamentale nell'infrastruttura informatica e possono fornire una vasta gamma di servizi e funzionalità.</dd>
+
+    <dt>Shell</dt>
+    <dd>Una "shell" è un interprete di comandi o un'interfaccia utente a riga di comando (CLI, Command Line Interface) che permette agli utenti di comunicare con il sistema operativo e interagire con il computer mediante l'inserimento di comandi testuali. La shell è un componente essenziale di molti sistemi operativi, tra cui Unix, Linux, macOS e anche Windows, dove è nota come "Command Prompt" o "Windows PowerShell".</dd>
+
+    <dt>Sistema operativo</dt>
+    <dd>Software che gestisce l'hardware e fornisce un'interfaccia per gli utenti e le applicazioni.</dd>
+
+    <dt>Scheda madre</dt>
+    <dd>La scheda principale del computer su cui sono montati CPU, RAM e altre componenti.</dd>
+
+    <dt>Shareware</dt>
+    <dd>Software che può essere provato gratuitamente ma richiede un pagamento per l'uso continuato o per ottenere funzionalità avanzate.</dd>
+    <dt>Switch</dt>
+    <dd> è un dispositivo di rete utilizzato per instradare e gestire il traffico di dati all'interno di una rete locale (LAN). 
+    Funge da "punto di connessione" per vari dispositivi come computer, stampanti e altri dispositivi di rete, consentendo 
+    loro di comunicare tra loro in modo efficiente. Uno switch opera a livello di collegamento dati del modello OSI e utilizza gli indirizzi MAC
+    per determinare a quale dispositivo inviare i dati.</dd>
+    <dt>SOC (Security Operations Center) </dt>
+    <dd> a volte definito ISOC (information security operations center, centro per le operazioni di sicurezza delle informazioni) –
+      è un team di professionisti della sicurezza IT interno all'azienda o in outsourcing che monitora l'intera infrastruttura IT di un'organizzazione, 24 ore al giorno,
+      7 giorni alla settimana, per rilevare in tempo reale gli eventi relativi alla sicurezza informatica e affrontarli nel modo più rapido ed efficace possibile
+    </dd>
+      
+    <dd>Una rete privata virtuale che consente la connessione sicura attraverso una rete pubblica, come Internet.</dd>
+  </dl>
+    
+    <dt>TLS (Transport Layer Security)</dt>
+    <dd>Il protocollo crittografico utilizzato per garantire la sicurezza delle comunicazioni su reti informatiche, come Internet.</dd>
+
+    <dt>TCP/IP</dt>
+    <dd>Il protocollo di comunicazione fondamentale utilizzato in Internet.</dd>
+
+    <dt>UEFI (Unified Extensible Firmware Interface)</dt>
+    <dd>Un firmware moderno che sostituisce gradualmente il BIOS, offrendo maggiori funzionalità e flessibilità nell'avvio del sistema.</dd>
+
+    <dt>Virtualizzazione</dt>
+    <dd>Tecnologia che consente l'esecuzione di più sistemi operativi su un unico hardware.</dd>
+
+    <dt>VPN (Virtual Private Network)</dt>
+    <dd>Una rete privata virtuale che consente la connessione sicura attraverso una rete pubblica, come Internet.</dd>
+  </dl>
+</div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+  const themeToggle = document.getElementById("theme-toggle");
+  const body = document.body;
+  themeToggle.addEventListener("click", () => {
+    // Alterna tra il tema chiaro e scuro aggiungendo o rimuovendo la classe "dark-mode" dal body
+    body.classList.toggle("dark-mode");
+  });
+</script></body>
+</html>

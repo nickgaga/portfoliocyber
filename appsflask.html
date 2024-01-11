@@ -1,0 +1,214 @@
+
+
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina HTML con codice Flask</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+    
+  </script>  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    .code-editor {
+      background-color: #f5f5f5;
+      padding: 10px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="kali.html">Kali linux</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="appsflask.html">Applicazioni flask</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="alterapp.html">Applicazioni con crittografia</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="document.html">Riferimenti utili</a>
+        </li>      </ul>
+    </div>
+  </nav>  <div class="container">
+    <h1>Applicazioni flask che utilizzano i cookies</h1>
+
+    <p>Negli esempi sotto riportati, vediamo applicazioni flask che utilizzano la tecnologia dei cookies:</p>
+<p>Nel primo esempio una semplice applicazione che chiede all'utente di inserire lo username (se questo è già registrato nel cookie il porogramma stampa un saluto, altrimenti va a registrare 
+  un nuovo utente con il relativo cookie:</p>    <div class="code-editor">
+      <pre><code class="language-python">from flask import Flask, request, make_response, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    username = request.cookies.get('username')
+    if username:
+        return f'Ciao {username}! Benvenuto di nuovo.'
+    else:
+        return render_template('login.html')
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form.get('username')
+    if username:
+        response = make_response(f'Login effettuato come {username}.')
+        response.set_cookie('username', username)
+        return response
+    else:
+        return 'Nome utente mancante. Impossibile effettuare il login.'
+
+@app.route('/logout')
+def logout():
+    response = make_response('Logout effettuato.')
+    response.set_cookie('username', '', expires=0)
+    return response
+
+# Questo codice Flask crea un'applicazione web con una rotta '/'
+# che restituisce un messaggio di benvenuto all'utente se il
+# cookie 'username' è presente. In caso contrario, reindirizza
+# all'HTML di login.
+
+if __name__ == '__main__':
+    app.run()</code></pre>
+    </div>
+
+    <p>Il secondo programma è simile al primo, con l'unica differenza che oltre a registrare il cookie con lo username dell'utente, registra anche la data dell'ultimo accesso. Da notare:
+    siccome per leggere il cookie  viene chiamato il metodo get di session. Questa richiede una chiave segreta per firmare la sessione.</p>
+
+    <div class="code-editor">
+      <pre><code class="language-python">from flask import Flask, request, make_response, render_template, session
+from datetime import datetime
+
+app = Flask(__name__)
+app.secret_key = 'supersecretkey'  # Chiave segreta per firmare la sessione
+
+@app.route('/')
+def index():
+    username = session.get('username')
+    last_access = session.get('last_access')
+    if username:
+        return f'Ciao {username}! Ultimo accesso: {last_access}'
+    else:
+        return render_template('login.html')
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form.get('username')
+    if username:
+        session['username'] = username
+        session['last_access'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        return f'Login effettuato come {username}.'
+    else:
+        return 'Nome utente mancante. Impossibile effettuare il login.'
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    session.pop('last_access', None)
+    return 'Logout effettuato.'
+
+# Questo codice Flask crea un'applicazione web con una rotta '/'
+# che restituisce un messaggio di benvenuto all'utente se l'username
+# è presente nella sessione. In caso contrario, reindirizza
+# all'HTML di login.
+
+if __name__ == '__main__':
+    app.run()</code></pre>
+    </div>
+
+    <p>Nel terzo programma i cookie con i dati di accesso dell'utente sono utilizzati per creare un grafico con le statiche di accesso all'applicazione:</p>
+
+    <div class="code-editor">
+      <pre><code class="language-python">from flask import Flask, request, render_template, session
+from datetime import datetime
+import matplotlib.pyplot as plt
+from io import BytesIO
+import base64
+import mysql.connector
+
+# Configurazione del database MySQL
+db_config = {
+    'user': 'root',
+    'password': '',
+    'host': 'localhost',
+    'database': 'mydatabase',
+    'raise_on_warnings': True
+}
+
+app = Flask(__name__)
+app.secret_key = 'supersecretkey'  # Chiave segreta per firmare la sessione
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    session.pop('last_access', None)
+    return 'Logout effettuato.'
+
+@app.route('/accessi')
+def accessi():
+    access_dates = get_access_dates()  # Ottiene le date di accesso dal database
+    return render_template('accessi.html', access_dates=access_dates)
+
+@app.route('/istogramma')
+def istogramma():
+    access_dates = get_access_dates()  # Ottiene le date di accesso dal database
+    plt.hist(access_dates, bins=10)  # Crea un istogramma con 10 bin
+    plt.xlabel('Data di accesso')
+    plt.ylabel('Frequenza')
+    plt.title('Istogramma degli accessi')
+    buffer = BytesIO()
+    plt.savefig(buffer, format='png')  # Salva il grafico su un buffer
+    buffer.seek(0)
+    image_base64 = base64.b64encode(buffer.getvalue()).decode()  # Converti l'immagine in base64
+    plt.close()
+    return render_template('istogramma.html', image_base64=image_base64)
+
+def save_access(username, access_date):
+    try:
+        connection = mysql.connector.connect(**db_config)
+        cursor = connection.cursor()
+        insert_query = "INSERT INTO accessi (username, access_date) VALUES (%s, %s)"
+        data = (username, access_date)
+        cursor.execute(insert_query, data)
+        connection.commit()
+        cursor.close()
+        connection.close()
+    except mysql.connector.Error as error:
+        print("Errore durante il salvataggio dell'accesso nel database:", error)
+
+def get_access_dates():
+    access_dates = []
+    try:
+        connection = mysql.connector.connect(**db_config)
+        cursor = connection.cursor()
+        select_query = "SELECT access_date FROM accessi"
+        cursor.execute(select_query)
+        rows = cursor.fetchall()
+        for row in rows:
+            access_dates.append(row[0])
+        cursor.close()
+        connection.close()
+        return access_dates
+    except mysql.connector.Error as error:
+        print("Errore durante il recupero delle date di accesso dal database:", error)
+        return access_dates
+
+if __name__ == '__main__':
+    app.run()</code></pre>
+    </div>
+
+</body>
+</html>

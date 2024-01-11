@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina HTML con codice Python</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="kali.html">Kali linux</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="appsflask.html">Applicazioni flask</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="alterapp.html">Applicazioni con crittografia</a>
+        </li>
+      
+      <li class="nav-item">
+          <a class="nav-link" href="document.html">Riferimenti utili</a>
+        </li></ul></div>
+  </nav>   <div class="container">
+    <h1>Sistemi di crittografia con l'utilizzo di Python</h1>
+    <h3> Crittografia a chiave asimmetrica</h3>
+<p>
+Di seguito la spiegazione del primo programma in cui si esegue una crittografia a chiave asimmetrica:
+</p>
+
+  <ul>
+  <li><strong>from cryptography.fernet import Fernet:</strong> Importa la classe Fernet dal modulo cryptography.fernet. Fernet è una classe che fornisce implementazioni per crittografare e decrittografare dati utilizzando l'algoritmo di crittografia Fernet.</li>
+  <li><strong>key = Fernet.generate_key():</strong> Genera una chiave casuale utilizzata per crittografare e decrittografare i dati. La chiave generata sarà un oggetto di tipo bytes.</li>
+  <li><strong>cipher = Fernet(key):</strong> Crea un oggetto Fernet utilizzando la chiave generata. Questo oggetto verrà utilizzato per crittografare e decrittografare i dati.</li>
+  <li><strong>data = b"Il mio messaggio segreto":</strong> Definisce i dati da crittografare. In questo caso, viene utilizzata una stringa in formato di byte.</li>
+  <li><strong>encrypted_data = cipher.encrypt(data):</strong> Crittografa i dati utilizzando l'oggetto Fernet creato in precedenza. Il risultato crittografato sarà un oggetto di tipo bytes.</li>
+  <li><strong>print("Dati crittografati:", encrypted_data):</strong> Stampa i dati crittografati.</li>
+  <li><strong>decrypted_data = cipher.decrypt(encrypted_data):</strong> Decrittografa i dati crittografati utilizzando l'oggetto Fernet. Il risultato decrittografato sarà un oggetto di tipo bytes.</li>
+  <li><strong>print("Dati decrittografati:", decrypted_data):</strong> Stampa i dati decrittografati.</li>
+</ul>
+    <div class="code-editor">
+      <pre><code class="language-python">
+from cryptography.fernet import Fernet
+
+# Genera una chiave casuale
+key = Fernet.generate_key()
+
+# Crea un oggetto Fernet con la chiave generata
+cipher = Fernet(key)
+
+# Dati da crittografare
+data = b"Il mio messaggio segreto"
+
+# Crittografa i dati
+encrypted_data = cipher.encrypt(data)
+
+print("Dati crittografati:", encrypted_data)
+
+# Decrittografa i dati
+decrypted_data = cipher.decrypt(encrypted_data)
+
+print("Dati decrittografati:", decrypted_data)
+      </code></pre>
+    </div>
+  <h3> Crittografia a chiave simmetrica</h3>
+    <p>
+Di seguito la spiegazione del secondo programma in cui si esegue una crittografia a chiave simmetrica:
+</p>  
+  <ul>
+  <li><strong>Importa la classe rsa dal modulo cryptography.hazmat.primitives.asymmetric.</strong> Questa classe fornisce funzionalità per la generazione di chiavi RSA.</li>
+  <li><strong>Importa i moduli serialization e hashes dal modulo cryptography.hazmat.primitives.</strong> Questi moduli forniscono funzionalità per la serializzazione delle chiavi e l'utilizzo di funzioni hash.</li>
+  <li><strong>Importa il modulo padding dal modulo cryptography.hazmat.primitives.asymmetric.</strong> Questo modulo fornisce funzionalità per il padding utilizzato nella crittografia asimmetrica.</li>
+  <li>Genera una chiave privata RSA utilizzando la funzione generate_private_key del modulo rsa. La chiave privata avrà una dimensione di 2048 bit e un esponente pubblico di 65537.</li>
+  <li>Ottiene la chiave pubblica corrispondente alla chiave privata generata.</li>
+  <li>Converte la chiave privata in formato PEM utilizzando la funzione private_bytes del modulo serialization. La chiave privata verrà codificata utilizzando l'encoding PEM, nel formato PKCS8 e senza alcun algoritmo di crittografia.</li>
+  <li>Converte la chiave pubblica in formato PEM utilizzando la funzione public_bytes del modulo serialization. La chiave pubblica verrà codificata utilizzando l'encoding PEM e nel formato SubjectPublicKeyInfo.</li>
+  <li>Definisce i dati da crittografare. In questo caso, viene utilizzata una stringa in formato di byte.</li>
+  <li>Crittografa i dati utilizzando la chiave pubblica. Viene utilizzato il padding OAEP (Optimal Asymmetric Encryption Padding) con l'algoritmo di hash SHA256.</li>
+  <li>Stampa i dati crittografati.</li>
+  <li>Decrittografa i dati utilizzando la chiave privata. Viene utilizzato lo stesso padding OAEP con l'algoritmo di hash SHA256.</li>
+  <li>Stampa i dati decrittografati.</li>
+</ul>
+     <div class="code-editor">
+      <pre><code class="language-python">
+      from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives import serialization, hashes
+from cryptography.hazmat.primitives.asymmetric import padding
+
+# Genera una coppia di chiavi RSA
+private_key = rsa.generate_private_key(
+    public_exponent=65537,
+    key_size=2048
+)
+public_key = private_key.public_key()
+
+# Converti la chiave privata in formato PEM
+pem_private_key = private_key.private_bytes(
+    encoding=serialization.Encoding.PEM,
+    format=serialization.PrivateFormat.PKCS8,
+    encryption_algorithm=serialization.NoEncryption()
+)
+
+# Converti la chiave pubblica in formato PEM
+pem_public_key = public_key.public_bytes(
+    encoding=serialization.Encoding.PEM,
+    format=serialization.PublicFormat.SubjectPublicKeyInfo
+)
+
+# Dati da crittografare
+data = b"Il mio messaggio segreto"
+
+# Crittografa i dati utilizzando la chiave pubblica
+encrypted_data = public_key.encrypt(
+    data,
+    padding.OAEP(
+        mgf=padding.MGF1(algorithm=hashes.SHA256()),
+        algorithm=hashes.SHA256(),
+        label=None
+    )
+)
+
+print("Dati crittografati:", encrypted_data)
+
+# Decrittografa i dati utilizzando la chiave privata
+decrypted_data = private_key.decrypt(
+    encrypted_data,
+    padding.OAEP(
+        mgf=padding.MGF1(algorithm=hashes.SHA256()),
+        algorithm=hashes.SHA256(),
+        label=None
+    )
+)
+
+print("Dati decrittografati:", decrypted_data)
+      
+       </code></pre>
+    </div>   
+<h3> Crittografia con hashing</h3>
+    <p>
+Di seguito la spiegazione del secondo programma in cui si esegue una crittografia con hashing:
+</p>  
+    <ul>
+  <li>Importa il modulo hashlib, che fornisce funzionalità per il calcolo degli hash crittografici.</li>
+  <li>Definisce una stringa di testo da cui calcolare l'hash. In questo caso, la stringa è "Ciao, mondo!".</li>
+  <li>Crea un oggetto hash utilizzando l'algoritmo SHA-256. La stringa viene convertita in una sequenza di byte utilizzando il metodo <code>encode()</code>.</li>
+  <li>Calcola l'hash della stringa utilizzando il metodo <code>hexdigest()</code> dell'oggetto hash. <code>hexdigest()</code> restituisce una rappresentazione esadecimale dell'hash calcolato.</li>
+  <li>Stampa la stringa originale.</li>
+  <li>Stampa il valore dell'hash SHA-256 calcolato.</li>
+</ul>
+       <div class="code-editor">
+      <pre><code class="language-python"> 
+import hashlib
+
+stringa = "Ciao, mondo!"
+hash_object = hashlib.sha256(stringa.encode())
+hash_value = hash_object.hexdigest()
+
+print("Stringa originale:", stringa)
+print("Valore di hash SHA-256:", hash_value)
+
+
+
+
+        
+ </code></pre>
+    </div>  
+
+        
+      </div></body><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script></html>
